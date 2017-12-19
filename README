@@ -1,0 +1,35 @@
+Team Number : 21
+Team Members :  Akshay Gajanan Hasyagar,Karthikeyan Kathiresan
+This is a TCP Simple Broadcast Chat Server and Client.
+
+It consists of 3 source files :
+
+1. ChatServer.c
+2. ChatClient.c
+3. AttributeStruct.h
+and a Makefile.
+
+Steps to run the program
+1)make 
+2)The server should be started with the IP and port supplied on the command line
+	./server server_ip server_port max_clients
+3)The clients should be started with the IP and port supplied on the command line
+	./client username server_ip server_port
+
+The server starts on a particular port.
+The client with username joins
+Multiple clients can join (with different usernames) 
+Message sent by one client is broadcasted to all other clients (but not to the client sending the message)
+When a client leaves the chat, server is notified of the same, and it broadcasts it to other clients (we get to know if server and client is ONLINE or OFFLINE)
+When the client is idle for more than 10 seconds, a IDLE message is displayed. 
+
+
+1) ChatServer.c : This is the server file, after starting, server accepts multiple client connections with JOIN messages. On receiving a client connection, the server validates the user and accordingly sends an ACK Message if validation is succesful, and NAK if validation is not succesful. Further, when server receives a message from a client, it broadcasts the same to all other clients.
+
+2) ChatClient.c : Connects to the server and contains functions for sending the join message, sending messages and receiving messages from other clients. 
+
+3) AttributeStruct.h : Contains the structures such as HeaderSBCP, AttributeSBCP and MessageSBCP for representing the SBCP message format. 
+
+BONUS Features Implimented:
+1)ACK, NAK, ONLINE and OFFLINE
+2)IDLE
